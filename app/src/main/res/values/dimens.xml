@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_padding_six">6dp</dimen>
+    <dimen name="margin_padding_eight">8dp</dimen>
     <dimen name="margin_padding_teen">10dp</dimen>
     <dimen name="margin_padding_sixteen">16dp</dimen>
-    <dimen name="margin_padding_eight">8dp</dimen>
+    <dimen name="margin_padding_twenty">20dp</dimen>
+    <dimen name="margin_padding_fifty">50dp</dimen>
+    <dimen name="margin_padding_sixty">60dp</dimen>
+
 
     <dimen name="tv_text_size_eighteen">18sp</dimen>
 </resources>

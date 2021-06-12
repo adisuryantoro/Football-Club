@@ -3,13 +3,19 @@ package id.adisuryantoro.footballclub
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import id.adisuryantoro.footballclub.databinding.ActivityMainBinding
+import id.adisuryantoro.footballclub.remote.ResponseHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +26,18 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        lifecycleScope.launchWhenStarted {
+            if (lifecycle.currentState >= Lifecycle.State.STARTED) {
+                startLoading()
+
+                withContext(Dispatchers.Default) { ResponseHelper.init(this@MainActivity) }
+
+                stopLoading()
+
+            }
+
+        }
 
         setUpViews()
     }
@@ -57,5 +75,20 @@ class MainActivity : AppCompatActivity() {
         binding.fabSearch.setOnClickListener {
             navController.navigate(R.id.searchFragment)
         }
+    }
+
+    fun startLoading() {
+        binding.cvActivityMain.visibility = View.VISIBLE
+
+    }
+
+    fun stopLoading() {
+        binding.cvActivityMain.visibility = View.GONE
+
+    }
+
+    fun popUp(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+
     }
 }

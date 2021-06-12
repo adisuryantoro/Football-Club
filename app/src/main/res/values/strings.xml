@@ -3,4 +3,5 @@
     <string name="string_title_fragment_home">Football</string>
     <string name="string_title_fragment_search">Search</string>
     <string name="string_title_fragment_favorites">Favorites</string>
+    <string name="string_club_name">Club Name</string>
 </resources>

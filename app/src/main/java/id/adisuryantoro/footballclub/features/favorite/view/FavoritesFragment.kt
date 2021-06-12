@@ -12,6 +12,7 @@ import id.adisuryantoro.footballclub.databinding.FavoritesFragmentBinding
 import id.adisuryantoro.footballclub.features.favorite.viewmodel.FavoritesViewModel
 
 class FavoritesFragment : Fragment() {
+
     lateinit var binding: FavoritesFragmentBinding
 
     companion object {
